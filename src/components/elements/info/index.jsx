@@ -3,8 +3,8 @@ import ChevronCircleLeftActiveImg from '../../../assets/svg/chevron.circle.left.
 import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.right.active.svg';
 import ArrayData1Img from '../../../assets/video/videoplayback.mp4';
 
-const PlayCursor = '../../../../public/play.bubble.svg';
-const PauseCursor = '../../../../public/pause.bubble.svg';
+const PlayCursor = '/public/play.bubble.svg';
+const PauseCursor = '/public/pause.bubble.png';
 
 const Info = () => {
     const ArrayData = [
