@@ -1,0 +1,52 @@
+:root {
+    --primary-color: #0346B8;
+    --lime-color-half-opacity: rgba(0, 255, 119, 0.5);
+    --lime-color: #00FF78;
+    --yellow-color: #E9C01E;
+    --yellow-color-filter: brightness(0) saturate(100%) invert(81%) sepia(72%) saturate(690%) hue-rotate(343deg) brightness(96%) contrast(90%);
+    --yellow-color-half-opacity: rgba(233, 192, 30, 0.5);
+    --darkLime-color: #00b957;
+    --primary-color-half-opacity: rgba(3, 69, 184, 0.5);
+    --secondary-color: #0265A6;
+    --text-color: #393939;
+    --background-color: #F4F6FA;
+    --white-color: #ffffff;
+    --gray-color: #acacac;
+    --light-gray-color: #ececec;
+    --red-color: #ff0000;
+    --red-color-highlight: #fff0f0;
+    --red-color-half-opacity: rgba(255, 0, 0, 0.5);
+    --hr-blue-color: #E7ECF3;
+    --black-color: #000000;
+    --low-shade-light-blue-color: #F4F8FF;
+    --low-shade-light-gray-color: #F4F4F4;
+    --high-shade-light-blue-color: #DEF2FF;
+    --opacity-100-background-color: rgba(244, 246, 250, 0);
+    --opacity-000-white-color: #ffffff;
+    --opacity-050-white-color: rgba(255, 255, 255, 0.5);
+    --opacity-100-white-color: rgba(255, 255, 255, 0);
+    --opacity-003-black-color: rgba(0, 0, 0, 0.03);
+    --opacity-007-black-color: rgba(0, 0, 0, 0.1);
+    --primary-color-filter: brightness(0) saturate(100%) invert(16%) sepia(72%) saturate(3870%) hue-rotate(213deg) brightness(93%) contrast(103%);
+    --white-color-filter: brightness(0) saturate(100%) invert(99%) sepia(58%) saturate(487%) hue-rotate(152deg) brightness(124%) contrast(96%);
+}
+
+.dark {
+    --primary-color: #0662FF;
+    --primary-color-half-opacity: rgba(6, 97, 255, 0.5);
+    --secondary-color: #0074C0;
+    --text-color: #f5f5f5;
+    --background-color: #101216;
+    --white-color: #171718;
+    --red-color: #a80000;
+    --hr-blue-color: #181818;
+    --black-color: #000000;
+    --low-shade-light-blue-color: #F4F8FF;
+    --low-shade-light-gray-color: #F4F4F4;
+    --high-shade-light-blue-color: #DEF2FF;
+    --opacity-000-white-color: #ffffff;
+    --opacity-100-white-color: rgba(255, 255, 255, 0);
+    --opacity-003-black-color: rgba(0, 0, 0, 0.03);
+    --opacity-007-black-color: rgba(0, 0, 0, 0.1);
+    --primary-color-filter: brightness(0) saturate(100%) invert(24%) sepia(89%) saturate(2740%) hue-rotate(215deg) brightness(101%) contrast(106%);
+}

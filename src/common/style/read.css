@@ -1,0 +1,88 @@
+.Section-Read {
+    background-color: red;
+    display: flex;
+}
+
+.image-gallery img {
+    width: 100%;
+}
+
+.read-card-group .Title-Header {
+    white-space: nowrap;
+}
+
+.read-card-group::-webkit-scrollbar {
+    display: none;
+}
+
+.read-card-group {
+    max-width: 25rem;
+    width: 100%;
+    padding: var(--safe-place) 0 var(--safe-place) var(--safe-place);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: var(--safe-place);
+    height: fit-content;
+}
+
+.read-card-group .Mini-card {
+    height: fit-content;
+}
+
+
+
+
+.Card-Top {
+    padding:  calc(var(--safe-place) * 2) 0 var(--safe-place) var(--safe-place);
+    position: fixed;
+    top: 110px;
+    z-index: 2;
+      width: calc(25rem - (var(--safe-place) * 4.5));
+
+}
+
+.Card-Bottom {
+    padding:  var(--safe-place) 0 var(--safe-place) var(--safe-place);
+        position: fixed;
+    bottom: 0;
+    z-index: 2;
+      width: calc(25rem - (var(--safe-place) * 4.5));
+
+}
+
+.Card-Bottom.hide .nav-button,
+.Card-Top.hide .nav-button {
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.Card-Bottom,
+.Card-Top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 8;
+    border-radius: var(--max-radius);
+    display: flex;
+    justify-content: center;
+    animation: fade-in-down 0.7s ease 1;
+    -webkit-animation: fade-in-down 0.7s ease 1;
+    -webkit-border-radius: var(--max-radius);
+    -moz-border-radius: var(--max-radius);
+    -ms-border-radius: var(--max-radius);
+    -o-border-radius: var(--max-radius);
+}
+
+
+@media screen and (max-width: 767px) {
+    .Card-Left {
+        padding: 0 0 0 var(--safe-place);
+    }
+
+    .Card-Top {
+        padding:var(--safe-place) 0  0 0;
+    }
+}
+

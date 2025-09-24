@@ -1,0 +1,288 @@
+.Video-Group {
+  position: relative;
+  padding: var(--safe-place) 0 var(--safe-place) var(--safe-place);
+  animation: fade-in-down 0.7s ease 1;
+  -webkit-animation: fade-in-down 0.7s ease 1;
+
+}
+
+.Video-Section {
+  display: flex;
+  width: 100%;
+  /* gap: var(--safe-place); */
+
+}
+
+.Video-Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  animation: fade-in-down 0.7s ease 1;
+  -webkit-animation: fade-in-down 0.7s ease 1;
+}
+
+.Video-Player {
+  width: 100%;
+  position: relative;
+}
+
+.Video-Playlist {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  border-radius: var(--main-radius);
+  -webkit-border-radius: var(--main-radius);
+  -moz-border-radius: var(--main-radius);
+  -ms-border-radius: var(--main-radius);
+  -o-border-radius: var(--main-radius);
+  overflow-y: scroll;
+  height: 50dvh;
+  -ms-overflow-style: none;
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.Video-Playlist::-webkit-scrollbar {
+  display: none;
+}
+
+.Video-Playlist-Group {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.Video-Playlist-Group .Title-Header {
+  text-align: start;
+  padding-inline: var(--safe-place);
+}
+
+.Video {
+  width: 100%;
+  height: 55dvh;
+  border-radius: var(--main-radius);
+  position: relative;
+  background-color: var(--white-color);
+  box-shadow: var(--main-shadow);
+  -webkit-border-radius: var(--main-radius);
+  -moz-border-radius: var(--main-radius);
+  -ms-border-radius: var(--main-radius);
+  -o-border-radius: var(--main-radius);
+}
+
+.Video-Grid-Item p {
+  font-size: var(--font-12px);
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.Video-Grid-Item {
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* justify-content: center; */
+  border-radius: var(--main-radius);
+  -webkit-border-radius: var(--main-radius);
+  -moz-border-radius: var(--main-radius);
+  -ms-border-radius: var(--main-radius);
+  -o-border-radius: var(--main-radius);
+  box-shadow: var(--main-shadow);
+}
+
+.Video-Grid-Item:hover .Video-Grid-Title, .Video-Grid-Item:hover p{
+  color: var(--primary-color);  
+}
+
+.Video-Grid-Item:hover .Cards-Item-Bio img {
+    filter: var(--primary-color-filter);
+  -webkit-filter: var(--primary-color-filter);
+}
+
+.Video-Grid-Item:hover {
+cursor: pointer;
+  z-index: 2;
+  box-shadow: var(--unfocus-shadow);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+
+}
+
+.Video-Grid-Title {
+  font-size: var(--font-16px);
+  color: var(--text-color);
+  font-weight: 600;
+  padding: var(--safe-place);
+  /* margin-bottom: var(--inner-safe-gap); */
+}
+
+.Video-Grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--safe-place);
+
+  width: 100%;
+  padding: var(--safe-place);
+  /* background-color: blue; */
+
+}
+
+.Video-Grid .video-img {
+  border-radius: var(--secondary-radius);
+  margin: var(--inner-safe-place) var(--inner-safe-place) 0 var(--inner-safe-place);
+  border-radius: var(--main-radius);
+  width: calc(100% - var(--inner-safe-place) * 2);
+  /*min-width: 100px;
+  */
+  height: fit-content;
+  -webkit-border-radius: var(--secondary-radius);
+  -moz-border-radius: var(--secondary-radius);
+  -ms-border-radius: var(--secondary-radius);
+  -o-border-radius: var(--secondary-radius);
+}
+
+.Video-Items {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  z-index: 9;
+  gap: var(--safe-place);
+  left: 50%;
+  padding-inline: var(--safe-place);
+  transform: translateX(-50%) translateY(-50%);
+
+}
+
+.Video-Time p {
+  font-size: var(--font-12px);
+}
+
+.Volume-Control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.Video-Controls,
+.Video-Track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--safe-place);
+  background-color: var(--white-color);
+  border-radius: var(--max-radius);
+  padding: calc(var(--safe-place) - 5px);
+  box-shadow: var(--main-shadow);
+  animation: fade-in-down 0.7s ease 1;
+  -webkit-animation: fade-in-down 0.7s ease 1;
+}
+
+.Video-Track {
+  width: 100%;
+}
+
+.Video-Progress {
+  display: flex;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.Video-Time {
+  white-space: nowrap;
+}
+
+.Progress {
+  width: 100%;
+  height: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background-color: transparent;
+}
+
+.Progress::-webkit-progress-bar {
+  background-color: var(--opacity-007-black-color);
+  border-radius: var(--max-radius);
+}
+
+.Progress::-webkit-progress-value {
+  background-color: var(--primary-color);
+  border-radius: var(--max-radius);
+}
+
+.Progress::-moz-progress-bar {
+  background-color: var(--primary-color);
+}
+
+
+/* --------- */
+
+
+.Volume-Slider-Container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 150px;
+  height: 10px;
+  background: #eee;
+  border-radius: var(--max-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-left: var(--safe-place);
+}
+
+.Volume-Slider-Fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: var(--max-radius);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.Volume-Slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  margin: 0;
+
+}
+
+.Volume-Slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  background: none;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.Video-Controls img:hover {
+  filter: var(--primary-color-filter);
+}
