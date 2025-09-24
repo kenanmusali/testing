@@ -9,7 +9,6 @@ import ClockImage from '../../../assets/svg/clock.arrow.circlepath.svg';
 import CloseImage from '../../../assets/svg/close.bubble.svg';
 import EyeImage from '../../../assets/svg/eye.svg';
 
-
 const Vacancies = () => {
     const [isColumnLayout, setIsColumnLayout] = useState(true);
     const [animationKey, setAnimationKey] = useState(0);
@@ -43,8 +42,41 @@ const Vacancies = () => {
         { id: 8, EyeImage:EyeImage, view: '487', image: ArrayData1Img, title: 'Elektrik montyoru', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'Electrician' },
         { id: 9, EyeImage:EyeImage, view: '286', image: ArrayData1Img, title: 'Hesabatlıq üzrə mütəxəssis', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'ReportingSpecialist' },
         { id: 10, EyeImage:EyeImage, view: '374', image: ArrayData1Img, title: 'İnzibatiləşdirmə üzrə kiçik mütəxəssis', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'JRAdministrativeSpecialist' }
-
     ];
+
+    // Unified month names mapping to avoid duplication
+    const monthNames = {
+        // Azerbaijani months
+        'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+        'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+        // English months (using different keys for May)
+        'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May_en': 5, 'June': 6,
+        'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+    };
+
+    // Unified date parsing function
+    const parseDate = (dateStr) => {
+        if (!dateStr) return new Date();
+        
+        const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
+        
+        // Handle the special case for "May" - since your data uses Azerbaijani months,
+        // we'll prioritize the Azerbaijani version
+        let monthKey = monthStr;
+        if (monthStr === 'May') {
+            // Check if this is likely English or Azerbaijani context
+            // Based on your data, it's probably Azerbaijani
+            monthKey = 'May';
+        } else if (monthNames[monthStr] === undefined) {
+            // If the month string is not found, try English version
+            monthKey = Object.keys(monthNames).find(key => 
+                key.toLowerCase() === monthStr.toLowerCase()
+            ) || monthStr;
+        }
+        
+        const month = monthNames[monthKey];
+        return new Date(year, month - 1, day);
+    };
 
     useEffect(() => {
         const loadJobDescriptions = async () => {
@@ -76,19 +108,6 @@ const Vacancies = () => {
     // Function to check if a job is expired
     const isJobExpired = (job) => {
         if (!job.expireDate) return false;
-
-        const monthNames = {
-            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-        };
-
-        const parseDate = (dateStr) => {
-            const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-            const month = monthNames[monthStr];
-            return new Date(year, month - 1, day);
-        };
 
         const expireDate = parseDate(job.expireDate);
         const today = new Date();
@@ -126,23 +145,8 @@ const Vacancies = () => {
             const firstItem = originalArrayData[0]; // The item with id: 0
             const otherItems = originalArrayData.slice(1); // All other items
 
-            // Convert dates to a sortable format
-            const monthNames = {
-                'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-                'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-            };
-
             const sortedItems = [...otherItems].sort((a, b) => {
                 if (!a.date || !b.date) return 0;
-
-                const parseDate = (dateStr) => {
-                    const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-                    const month = monthNames[monthStr];
-                    return new Date(year, month - 1, day);
-                };
-
                 return parseDate(b.date) - parseDate(a.date);
             });
 
@@ -158,20 +162,6 @@ const Vacancies = () => {
             setDisplayedData(isSortedByDate ?
                 [originalArrayData[0], ...originalArrayData.slice(1).sort((a, b) => {
                     if (!isSortedByDate) return 0;
-
-                    const monthNames = {
-                        'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-                        'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                        'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                        'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-                    };
-
-                    const parseDate = (dateStr) => {
-                        const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-                        const month = monthNames[monthStr];
-                        return new Date(year, month - 1, day);
-                    };
-
                     return parseDate(b.date) - parseDate(a.date);
                 }).slice(0, itemsToShow - 1)] :
                 originalArrayData.slice(0, itemsToShow)
@@ -181,20 +171,6 @@ const Vacancies = () => {
             setDisplayedData(isSortedByDate ?
                 [originalArrayData[0], ...originalArrayData.slice(1).sort((a, b) => {
                     if (!isSortedByDate) return 0;
-
-                    const monthNames = {
-                        'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-                        'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                        'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                        'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-                    };
-
-                    const parseDate = (dateStr) => {
-                        const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-                        const month = monthNames[monthStr];
-                        return new Date(year, month - 1, day);
-                    };
-
                     return parseDate(b.date) - parseDate(a.date);
                 })] :
                 originalArrayData
@@ -336,9 +312,9 @@ const Vacancies = () => {
                                                 <p>{item.location}</p>
                                             </div>
                                         )}
-                                        {item.location && (
+                                        {item.EyeImage && (
                                             <div className="Cards-Item-Bio">
-                                                <img src={item.EyeImage} className='No-Select' alt="Location" />
+                                                <img src={item.EyeImage} className='No-Select' alt="Views" />
                                                 <p>{item.view}</p>
                                             </div>
                                         )}
