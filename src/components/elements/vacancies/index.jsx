@@ -74,6 +74,7 @@ const Vacancies = () => {
             ) || monthStr;
         }
         
+        
         const month = monthNames[monthKey];
         return new Date(year, month - 1, day);
     };
