@@ -262,7 +262,7 @@ const Vacancies = () => {
 
     return (
         <div className="section-column">
-            <p className='Title-Header'>Karyera imkanları</p>
+            <p className='Title-Header'>Vakansiyalar</p>
             <div className="Section-Sort-Group">
 
                 <div className="Section-Sort-Left">

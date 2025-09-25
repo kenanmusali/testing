@@ -16,24 +16,23 @@ import ArrayData11Img from '../../../assets/image/partners/maa.png';
 import ArrayData12Img from '../../../assets/image/partners/ptm.png';
 import ArrayData13Img from '../../../assets/image/partners/oyk.jpg';
 
-
-
 const Partners = () => {
     const ArrayData = [
-        { id: 0, image: ArrayData1Img, title: 'Azərbaycan Dövlət İqtisad Universiteti', description: '' },
-        { id: 1, image: ArrayData2Img, title: 'Bakı Dövlət Universiteti', description: '' },
-        { id: 2, image: ArrayData3Img, title: 'Azərbaycan Texniki Universiteti', description: '' },
-        { id: 3, image: ArrayData4Img, title: 'Bakı Avrasiya Universiteti', description: '' },
-        { id: 4, image: ArrayData5Img, title: 'ADA Universiteti', description: '' },
-        { id: 5, image: ArrayData6Img, title: 'Bakı Mühəndislik Universiteti', description: '' },
-        { id: 6, image: ArrayData11Img, title: 'Milli Aviasiya Akademiyası', description: '' },
-        { id: 7, image: ArrayData7Img, title: 'Azərbaycan Dövlət Neft və Sənaye Universiteti', description: '' },
-        { id: 8, image: ArrayData8Img, title: 'Bakı Biznes Universiteti', description: '' },
-        { id: 9, image: ArrayData9Img, title: 'Qərbi Kaspi Universiteti', description: '' },
-        { id: 10, image: ArrayData10Img, title: 'Dövlət Gömrük Komitəsi Akademiyası', description: '' },
-        { id: 11, image: ArrayData12Img, title: 'İctimai İaşə və Xidmət üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '' },
-        { id: 12, image: ArrayData13Img, title: 'Odlar Yurdu Universiteti', description: '' },
-    ];
+    { id: 0, image: ArrayData1Img, title: 'Azərbaycan Dövlət İqtisad Universiteti', description: '', website: 'https://unec.edu.az/' },
+    { id: 1, image: ArrayData2Img, title: 'Bakı Dövlət Universiteti', description: '', website: 'https://bsu.edu.az/' },
+    { id: 2, image: ArrayData3Img, title: 'Azərbaycan Texniki Universiteti', description: '', website: 'https://aztu.edu.az/' },
+    { id: 3, image: ArrayData4Img, title: 'Bakı Avrasiya Universiteti', description: '', website: 'https://baau.edu.az/' },
+    { id: 4, image: ArrayData5Img, title: 'ADA Universiteti', description: '', website: 'https://www.ada.edu.az/' },
+    { id: 5, image: ArrayData6Img, title: 'Bakı Mühəndislik Universiteti', description: '', website: 'https://beu.edu.az/' },
+    { id: 6, image: ArrayData11Img, title: 'Milli Aviasiya Akademiyası', description: '', website: 'https://naa.edu.az/' },
+    { id: 7, image: ArrayData7Img, title: 'Azərbaycan Dövlət Neft və Sənaye Universiteti', description: '', website: 'https://asoiu.edu.az/' },
+    { id: 8, image: ArrayData8Img, title: 'Bakı Biznes Universiteti', description: '', website: 'https://bbu.edu.az/' },
+    { id: 9, image: ArrayData9Img, title: 'Qərbi Kaspi Universiteti', description: '', website: 'https://qku.edu.az/' },
+    { id: 10, image: ArrayData10Img, title: 'Dövlət Gömrük Komitəsi Akademiyası', description: '', website: 'https://www.dga.edu.az/' },
+    { id: 11, image: ArrayData12Img, title: 'İctimai İaşə və Xidmət üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '', website: 'http://bduptm.edu.az/' },
+    { id: 12, image: ArrayData13Img, title: 'Odlar Yurdu Universiteti', description: '', website: 'https://oyu.edu.az/' }
+]
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
@@ -58,7 +57,6 @@ const Partners = () => {
             } else {
                 setItemsPerPage(7);
             }
-
 
             setShouldHideNav(ArrayData.length === 7 && width >= 1200);
         };
@@ -98,7 +96,7 @@ const Partners = () => {
         <div className="section-column" onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
 
-            <p className='Title-Header'>Tərəfdaşlarımız</p>
+            <p className='Title-Header'>Karyera tərəfdaşlarımız</p>
             <p className='section-description'>Tərəfdaşlıq etdiyimiz təhsil müəssisələri ilə birgə gənclərin bilik və bacarıqlarının inkişafına dəstək oluruq. Bu əməkdaşlıqlar sayəsində tələbə və məzunlar üçün daha geniş karyera və təcrübə imkanları yaradırıq.</p>
 
             <div className="Section-Card-Group">
@@ -114,12 +112,19 @@ const Partners = () => {
 
                 <div className="Section-Card">
                     {visibleItems.map((item) => (
-                        <div className="Cards Main-Card" key={item.id}>
+                        <a 
+                            href={item.website} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="Cards Main-Card" 
+                            key={item.id}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                             <div className="Cards-Item">
-                                <img src={item.image} className='No-Select Section-Icons Section-Icons-50px' />
+                                <img src={item.image} className='No-Select Section-Icons Section-Icons-50px' alt={item.title} />
                                 <p className='First-Title'>{item.title}</p>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
 
