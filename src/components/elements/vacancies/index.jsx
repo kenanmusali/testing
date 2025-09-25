@@ -54,6 +54,37 @@ const Vacancies = () => {
     'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
 }
 
+    // Function to format text with bold headings
+    const formatTextWithBoldHeadings = (text) => {
+        if (!text) return "";
+        
+        // Split text by lines and process each line
+        return text.split('\n').map((line, index) => {
+            // Check if line ends with a colon
+            if (line.trim().endsWith(':')) {
+                return (
+                    <div key={index} style={{ fontWeight: 'bold', marginTop: index > 0 ? '10px' : '0', marginBottom: '5px' }}>
+                        {line}
+                    </div>
+                );
+            } else if (line.trim().startsWith('•')) {
+                // Handle bullet points with proper indentation
+                return (
+                    <div key={index} style={{ paddingLeft: '20px', margin: '2px 0' }}>
+                        {line}
+                    </div>
+                );
+            } else {
+                // Regular line
+                return (
+                    <div key={index} style={{ margin: '2px 0' }}>
+                        {line}
+                    </div>
+                );
+            }
+        });
+    };
+
     // Unified date parsing function
     const parseDate = (dateStr) => {
         if (!dateStr) return new Date();
@@ -349,8 +380,8 @@ const Vacancies = () => {
                                 {selectedJob.id === 0 ? (
                                     <>
                                         <h2>{selectedJob.title}</h2>
-                                        <div className="general-cv-text" >
-                                            <p style={{ whiteSpace: 'pre-line' }}>{jobDescriptions[selectedJob.id]}</p>
+                                        <div className="general-cv-text">
+                                            {formatTextWithBoldHeadings(jobDescriptions[selectedJob.id])}
                                         </div>
                                     </>
                                 ) : (
@@ -374,7 +405,7 @@ const Vacancies = () => {
                                             </div>
                                         </div>
                                         <div className="job-description">
-                                            <p style={{ whiteSpace: 'pre-line' }}>{jobDescriptions[selectedJob.id]}</p>
+                                            {formatTextWithBoldHeadings(jobDescriptions[selectedJob.id])}
                                             {/* <a href={selectedJob.link} target="_blank" rel="noopener noreferrer">Tam vakansiya təsvirinə bax</a> */}
                                         </div>
                                     </>
