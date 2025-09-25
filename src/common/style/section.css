@@ -1210,12 +1210,24 @@ box-shadow: var(--main-shadow);
                 display: flex;
     justify-content: center;
     }
+
+        .expanded-card-image .expanded-card-image-main {
+    width: fit-content !important;
+    }
+
+    .expanded-card-content {
+    border-radius: var(--main-radius);
+    width: 55%;
+    max-width: 100%;
+    }
 }
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .expanded-card-image .expanded-card-image-main {
         box-shadow: var(--main-shadow);
     }
+
+
 
     .expanded-card-header,
     .expanded-card-description p {
