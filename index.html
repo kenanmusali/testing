@@ -18,11 +18,17 @@
   <div id="root"></div>
   <script type="module" src="./src/main.jsx"></script>
   <script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    if (width < 1320 && height < 1120) {
       document.body.style.zoom = "90%";
-    });
-  </script> -->
+    }
+  });
+</script>
+
 </body>
 
 </html>
